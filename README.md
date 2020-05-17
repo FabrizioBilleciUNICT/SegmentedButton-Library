@@ -1,7 +1,7 @@
 # SegmentedButton-Library
 
 ## Preview
-<img src="images/ss1.png" width="200px" />
+<img src="images/ss1.png" width="600px" />
 
 - On Selection
 <img src="images/ss2.png" width="200px" />
