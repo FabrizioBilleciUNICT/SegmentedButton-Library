@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
             /* selected item index: */0,
             /* fixed items width: */true)
         radioView.setAdapter(adapter)
-        System.err.println(radioView.weightSum)
         adapter.onItemSelected = { index ->
             Toast.makeText(this, "Selected item: $index", Toast.LENGTH_SHORT).show()
         }
