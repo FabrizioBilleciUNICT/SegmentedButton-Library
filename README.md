@@ -29,7 +29,7 @@ In your Layout
  ```XML
      <com.codedix.segmentedbutton.SegmentedButtonView
         android:id="@+id/radioView"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 ```
@@ -38,12 +38,12 @@ In your Activity
  ```kotlin
     val selectedItemIndex = 0
     val adapter = SegmentedButtonAdapter(
-      this, 
-      arrayListOf("My Item 0", "My Item 1", "My Item 2"),
-      selectedItemIndex
-    )
+        /* activity */this,
+        /* item list */arrayListOf("My First Item", "My Item 1", "My Item 2"),
+        /* selected item index */0,
+        /* OPTIONAL: fixed items width */true)
     radioView.setAdapter(adapter)
     adapter.onItemSelected = { index ->
         Toast.makeText(this, "Selected item: $index", Toast.LENGTH_SHORT).show()
-    }
+    }    
 ```
