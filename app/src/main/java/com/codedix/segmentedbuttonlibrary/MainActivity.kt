@@ -12,8 +12,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = SegmentedButtonAdapter(this, arrayListOf("My Item 0", "My Item 1", "My Item 2"), 0)
+        val adapter = SegmentedButtonAdapter(
+            /* activity: */this,
+            /* item list: */arrayListOf("My First Item", "My Item 1", "My Item 2"),
+            /* selected item index: */0,
+            /* fixed items width: */true)
         radioView.setAdapter(adapter)
+        System.err.println(radioView.weightSum)
         adapter.onItemSelected = { index ->
             Toast.makeText(this, "Selected item: $index", Toast.LENGTH_SHORT).show()
         }

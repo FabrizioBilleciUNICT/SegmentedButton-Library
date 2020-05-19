@@ -5,10 +5,11 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import java.util.*
 
-class SegmentedButtonAdapter(private val activity: Activity, private val list: ArrayList<String>, selectedItem: Int) :
+class SegmentedButtonAdapter(private val activity: Activity, private val list: ArrayList<String>, selectedItem: Int, private val fixedWidth: Boolean = true) :
     ArrayAdapter<String?>(activity, 0) {
 
     var onItemSelected: ((Int) -> Unit)? = null
@@ -46,6 +47,13 @@ class SegmentedButtonAdapter(private val activity: Activity, private val list: A
         val inflater = activity.layoutInflater
         @SuppressLint("ViewHolder") val rowView = inflater.inflate(R.layout.item, null, true)
         val textView = rowView.findViewById<TextView>(R.id.text)
+
+        if(fixedWidth) {
+            val l = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT)
+            l.weight = 1F
+            rowView.layoutParams = l
+        }
+
         textView.text = list[position]
 
         textView.setBackgroundResource(bgRes[getLayoutPosition(position)][if (position == selectedItem) 0 else 1])
